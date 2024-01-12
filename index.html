@@ -5,182 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gunjan Kumar - Java Developer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-	<style>
-	/* style.css */
-body {
-    font-family: 'Arial', sans-serif;
-}
+    <style>
+        /* Sidebar Styles */
+        #wrapper {
+            display: flex;
+            height: 100vh;
+        }
 
-.navbar {
-    margin-bottom: 40px;
-}
+        #sidebar-wrapper {
+            min-width: 250px;
+            max-width: 250px;
+            background: #f8f9fa;
+        }
 
-#hero {
-    background: url('hero-background.jpg') center center no-repeat;
-    background-size: cover;
-    color: white;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .list-group-item-action {
+            position: relative;
+            transition: all 0.3s ease;
+        }
 
-.rounded-circle {
-    border: 3px solid white;
-    width: 150px;
-    height: 150px;
-}
+        .list-group-item-action::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
 
-/* Additional styling will be added in subsequent parts */
-/* Continuing style.css */
-#about {
-    padding: 40px 0;
-    background-color: #f8f9fa;
-}
+        .list-group-item-action.active::after {
+            width: 100%;
+        }
 
-#about h2 {
-    color: #007bff;
-}
+        #sidebar-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
 
-#about h3 {
-    color: #343a40;
-}
+        #page-content-wrapper {
+            flex-grow: 1;
+            padding-left: 250px;
+        }
 
-#about p, #about ul {
-    font-size: 16px;
-}
+        /* Additional CSS for other elements */
+        body {
+            font-family: 'Arial', sans-serif;
+        }
 
-/* Responsive design for smaller devices */
-@media (max-width: 768px) {
-    #about .row {
-        text-align: center;
-    }
+        #hero, #about, #experience, #portfolio, #contact {
+            padding: 40px 0;
+        }
 
-    #about .col-lg-6 {
-        margin-bottom: 20px;
-    }
-}
-/* Continuing style.css */
-.timeline {
-    position: relative;
-    padding-left: 30px;
-    margin-top: 20px;
-}
+        #hero {
+            background: url('hero-background.jpg') center center no-repeat;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.timeline-item {
-    margin-bottom: 40px;
-}
+        .rounded-circle {
+            border: 3px solid white;
+            width: 150px;
+            height: 150px;
+        }
 
-.timeline-item h3 {
-    color: #007bff;
-}
+        footer {
+            background-color: #343a40;
+            padding: 20px 0;
+            color: white;
+        }
 
-.timeline-item p.text-muted {
-    margin-bottom: 5px;
-}
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 15px;
-    width: 2px;
-    background: #007bff;
-}
+        footer a:hover {
+            text-decoration: underline;
+        }
 
-@media (max-width: 768px) {
-    .timeline {
-        padding-left: 15px;
-    }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #page-content-wrapper {
+                padding-left: 0;
+            }
 
-    .timeline::before {
-        left: 0;
-    }
-}
-/* Continuing style.css */
-.portfolio-item {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-}
+            #sidebar-wrapper {
+                min-width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
 
-.portfolio-item img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px;
-}
+            .sidebar-heading, .list-group-item {
+                text-align: center;
+            }
 
-.portfolio-item:hover {
-    transform: scale(1.05);
-}
+            .list-group-item-action::after {
+                left: calc(50% - 50px);
+                width: 100px;
+            }
+        }
 
-@media (max-width: 768px) {
-    .portfolio-item {
-        margin-bottom: 20px;
-    }
-}
-/* Continuing style.css */
-#contact {
-    padding: 40px 0;
-    background-color: #f8f9fa;
-}
-
-#contact form {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    background: white;
-}
-
-#contact .form-group {
-    margin-bottom: 20px;
-}
-
-#contact button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-}
-/* Continuing style.css */
-footer {
-    background-color: #343a40;
-    padding: 20px 0;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-	</style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Gunjan Kumar</a>
-       <!-- Navbar Toggler Button -->
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active"><a class="nav-link" href="#hero">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            </ul>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Gunjan Kumar</div>
+            <div class="list-group list-group-flush">
+                <a href="#hero" class="list-group-item list-group-item-action bg-light">Home</a>
+                <a href="#about" class="list-group-item list-group-item-action bg-light">About</a>
+                <a href="#experience" class="list-group-item list-group-item-action bg-light">Experience</a>
+                <a href="#portfolio" class="list-group-item list-group-item-action bg-light">Portfolio</a>
+                <a href="#contact" class="list-group-item list-group-item-action bg-light">Contact</a>
+            </div>
         </div>
-    </nav>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
 
     <!-- Hero Section -->
     <section id="hero" class="d-flex align-items-center">
@@ -280,12 +232,24 @@ footer p {
         <p class="mt-3">&copy; 2024 Your Name. All rights reserved.</p>
     </div>
 </footer>
+   </div>
+    </div>
+      <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Additional sections will be added in subsequent parts -->
+    <script>
+        // Smooth scrolling for sidebar links
+        document.querySelectorAll('#sidebar-wrapper .list-group-item-action').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
 
-   <!-- At the bottom of your HTML, before the closing </body> tag -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
